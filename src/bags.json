@@ -1,26 +1,23 @@
 [
   {
     "id": 0,
-    "name": "Friedaaaa",
-    "picture": "images/scottish-terrier.jpeg",
-    "age": 3,
-    "breed": "Scottish Terrier",
-    "location": "Lisco, Alabama"
+    "name": "Keine Ahnung 1",
+    "picture": "images/1.jpg",
+    "preis": 300,
+    "type": "Gibt es unterschiediche Typen?"
   },
   {
     "id": 1,
-    "name": "Gina",
-    "picture": "images/scottish-terrier.jpeg",
-    "age": 3,
-    "breed": "Scottish Terrier",
-    "location": "Tooleville, West Virginia"
+    "name": "handtasche XYZ",
+    "picture": "images/2.jpg",
+    "preis": 10.50,
+    "type": "Cooler Typ!"
   },
   {
     "id": 2,
-    "name": "Collins",
-    "picture": "images/french-bulldog.jpeg",
-    "age": 2,
-    "breed": "French Bulldog",
-    "location": "Freeburn, Idaho"
+    "name": "kein Plan",
+    "picture": "images/3.jpg",
+    "preis": 12345,
+    "type": "Fresher Dude"
   }
 ]

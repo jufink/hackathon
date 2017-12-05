@@ -11,8 +11,8 @@ App = {
       for (i = 0; i < data.length; i ++) {
         bags.find('.panel-title').text(data[i].name);
         bags.find('img').attr('src', data[i].picture);
-        bags.find('.bag-type').text(data[i].breed);
-        bags.find('.bag-price').text(data[i].age);
+        bags.find('.bag-type').text(data[i].type);
+        bags.find('.bag-price').text(data[i].preis);
         bags.find('.btn-rent').attr('data-id', data[i].id);
         bagRow.append(bags.html());
       }
