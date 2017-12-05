@@ -4,17 +4,17 @@ App = {
 
   init: function() {
     $.getJSON('../pets.json', function(data) {
-      var petsRow = $('#petsRow');
-      var petTemplate = $('#petTemplate');
+      var bagRow = $('#bagRow');
+      var bags = $('#bagT');
 
       for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', data[i].picture);
-        petTemplate.find('.pet-breed').text(data[i].breed);
-        petTemplate.find('.pet-age').text(data[i].age);
-        petTemplate.find('.pet-location').text(data[i].location);
-        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
-        petsRow.append(petTemplate.html());
+        bags.find('.panel-title').text(data[i].name);
+        bags.find('img').attr('src', data[i].picture);
+        bags.find('.pet-breed').text(data[i].breed);
+        bags.find('.pet-age').text(data[i].age);
+        bags.find('.pet-location').text(data[i].location);
+        bags.find('.btn-adopt').attr('data-id', data[i].id);
+        bagRow.append(bags.html());
       }
     });
     return App.initWeb3();
@@ -22,6 +22,7 @@ App = {
   initWeb3: function() {
     if (typeof web3 !== 'undefined') {
       App.web3Provider = web3.currentProvider;
+
     } else {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
     }
