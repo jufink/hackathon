@@ -3,16 +3,14 @@ App = {
   contracts: {},
 
   init: function() {
-    $.getJSON('../pets.json', function(data) {
+    $.getJSON('../bags.json', function(data) {
       var bagRow = $('#bagRow');
       var bags = $('#bagT');
-
       for (i = 0; i < data.length; i ++) {
         bags.find('.panel-title').text(data[i].name);
         bags.find('img').attr('src', data[i].picture);
-        bags.find('.pet-breed').text(data[i].breed);
-        bags.find('.pet-age').text(data[i].age);
-        bags.find('.pet-location').text(data[i].location);
+        bags.find('.bag-type').text(data[i].breed);
+        bags.find('.bag-price').text(data[i].age);
         bags.find('.btn-adopt').attr('data-id', data[i].id);
         bagRow.append(bags.html());
       }
