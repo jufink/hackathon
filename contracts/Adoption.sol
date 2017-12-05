@@ -11,7 +11,7 @@ contract Adoption {
     }
 
     // Retrieving the adopters
-    function getAdopters() public returns (address[16]) {
+    function getAdopters() public returns (address[4]) {
         return adopters;
     }
 }
