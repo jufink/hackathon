@@ -1,5 +1,5 @@
-var Adoption = artifacts.require("./Adoption.sol");
+var Fashion = artifacts.require("./Fashion.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(Adoption);
+  deployer.deploy(Fashion);
 };

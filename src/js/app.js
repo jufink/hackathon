@@ -1,6 +1,8 @@
 App = {
+
   web3Provider: null,
   contracts: {},
+
 
   init: function() {
     $.getJSON('../bags.json', function(data) {
@@ -17,6 +19,8 @@ App = {
     });
     return App.initWeb3();
   },
+
+
   initWeb3: function() {
     if (typeof web3 !== 'undefined') {
       App.web3Provider = web3.currentProvider;
@@ -27,8 +31,9 @@ App = {
     return App.initContract();
   },
 
+
   initContract: function() {
-    $.getJSON('Adoption.json', function(data) {
+    $.getJSON('Fashion.json', function(data) {
       var LendArtifact = data;
       App.contracts.Lend = TruffleContract(LendArtifact);
       App.contracts.Lend.setProvider(App.web3Provider);
@@ -37,24 +42,28 @@ App = {
     return App.bindEvents();
   },
 
+
   bindEvents: function() {
     $(document).on('click', '.btn-rent', App.lend);
   },
+
+
   markRented: function(adopters, account) {
-    var adoptionInstance;
+    var Contract;
     App.contracts.Lend.deployed().then(function(instance) {
-      adoptionInstance = instance;
-      return adoptionInstance.getAdopters.call();
+      Contract = instance;
+      return Contract.getRenters.call();
     }).then(function(adopters) {
       for (i = 0; i < adopters.length; i++) {
         if (adopters[i] !== '0x0000000000000000000000000000000000000000') {
-          $('.panel-pet').eq(i).find('button').text('Success').attr('disabled', true);
+          $('.panel-bag').eq(i).find('button').text('Success').attr('disabled', true);
         }
       }
     }).catch(function(err) {
       console.log(err.message);
     });
   },
+
 
   lend: function() {
     event.preventDefault();
@@ -67,7 +76,7 @@ App = {
       var account = accounts[0];
       App.contracts.Lend.deployed().then(function(instance) {
         Contract = instance;
-        return Contract.adopt(bagID, {from: account});
+        return Contract.rent(bagID, {from: account});
       }).then(function(result) {
         return App.markRented();
       }).catch(function(err) {
@@ -75,8 +84,8 @@ App = {
       });
     });
   }
-
 };
+
 
 $(function() {
   $(window).load(function() {

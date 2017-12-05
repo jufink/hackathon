@@ -22,13 +22,5 @@
     "age": 2,
     "breed": "French Bulldog",
     "location": "Freeburn, Idaho"
-  },
-  {
-    "id": 3,
-    "name": "Melissa",
-    "picture": "images/boxer.jpeg",
-    "age": 2,
-    "breed": "Boxer",
-    "location": "Camas, Pennsylvania"
   }
 ]
