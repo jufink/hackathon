@@ -11,7 +11,7 @@ App = {
         bags.find('img').attr('src', data[i].picture);
         bags.find('.bag-type').text(data[i].breed);
         bags.find('.bag-price').text(data[i].age);
-        bags.find('.btn-adopt').attr('data-id', data[i].id);
+        bags.find('.btn-rent').attr('data-id', data[i].id);
         bagRow.append(bags.html());
       }
     });
@@ -20,7 +20,6 @@ App = {
   initWeb3: function() {
     if (typeof web3 !== 'undefined') {
       App.web3Provider = web3.currentProvider;
-
     } else {
       App.web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
     }
@@ -28,26 +27,22 @@ App = {
     return App.initContract();
   },
 
-
   initContract: function() {
     $.getJSON('Adoption.json', function(data) {
-      var AdoptionArtifact = data;
-      App.contracts.Adoption = TruffleContract(AdoptionArtifact);
-      App.contracts.Adoption.setProvider(App.web3Provider);
-      return App.markAdopted();
+      var LendArtifact = data;
+      App.contracts.Lend = TruffleContract(LendArtifact);
+      App.contracts.Lend.setProvider(App.web3Provider);
+      return App.markRented();
     });
     return App.bindEvents();
   },
 
-
   bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handleAdopt);
+    $(document).on('click', '.btn-rent', App.lend);
   },
-
-
-  markAdopted: function(adopters, account) {
+  markRented: function(adopters, account) {
     var adoptionInstance;
-    App.contracts.Adoption.deployed().then(function(instance) {
+    App.contracts.Lend.deployed().then(function(instance) {
       adoptionInstance = instance;
       return adoptionInstance.getAdopters.call();
     }).then(function(adopters) {
@@ -61,21 +56,20 @@ App = {
     });
   },
 
-  
-  handleAdopt: function() {
+  lend: function() {
     event.preventDefault();
-    var petId = parseInt($(event.target).data('id'));
-    var adoptionInstance;
+    var bagID = parseInt($(event.target).data('id'));
+    var Contract;
     web3.eth.getAccounts(function(error, accounts) {
       if (error) {
         console.log(error);
       }
       var account = accounts[0];
-      App.contracts.Adoption.deployed().then(function(instance) {
-        adoptionInstance = instance;
-        return adoptionInstance.adopt(petId, {from: account});
+      App.contracts.Lend.deployed().then(function(instance) {
+        Contract = instance;
+        return Contract.adopt(bagID, {from: account});
       }).then(function(result) {
-        return App.markAdopted();
+        return App.markRented();
       }).catch(function(err) {
         console.log(err.message);
       });
