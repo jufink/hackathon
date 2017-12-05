@@ -1,0 +1,65 @@
+{
+  "contract_name": "Fashion",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "bag",
+          "type": "uint256"
+        }
+      ],
+      "name": "rent",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "renter",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "getRenters",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address[9]"
+        }
+      ],
+      "payable": false,
+      "type": "function"
+    }
+  ],
+  "unlinked_binary": "0x6060604052341561000f57600080fd5b5b61025d8061001f6000396000f300606060405263ffffffff7c01000000000000000000000000000000000000000000000000000000006000350416637456be7d81146100535780637766180f1461007b5780638d5f18c8146100ba575b600080fd5b341561005e57600080fd5b610069600435610107565b60405190815260200160405180910390f35b341561008657600080fd5b61009160043561017c565b60405173ffffffffffffffffffffffffffffffffffffffff909116815260200160405180910390f35b34156100c557600080fd5b6100cd6101b0565b604051808261012080838360005b838110156100f45780820151818401525b6020016100db565b5050505090500191505060405180910390f35b600080821015801561011a575060088211155b151561012557600080fd5b336000836009811061013357fe5b0160005b6101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055508190505b919050565b6000816009811061018957fe5b0160005b915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6101b8610208565b600060096101206040519081016040529190610120830182845b815473ffffffffffffffffffffffffffffffffffffffff1681526001909101906020018083116101d2575b505050505090505b90565b6101206040519081016040526009815b60008152600019909101906020018161021857905050905600a165627a7a72305820048ce4e7092ff06bff3ccfeb5d98cdf5053fdf7e76782d415f4a15c2db0df6b40029",
+  "networks": {
+    "1512515243068": {
+      "events": {},
+      "links": {},
+      "address": "0x5b68b324f237ab1c4df51004fe4dadfa8cb6e8fd",
+      "updated_at": 1512515258072
+    }
+  },
+  "schema_version": "0.0.5",
+  "updated_at": 1512515258072
+}
