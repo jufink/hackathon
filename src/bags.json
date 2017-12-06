@@ -1,23 +1,23 @@
 [
   {
     "id": 0,
-    "name": "Keine Ahnung 1",
+    "name": "Bag 1",
     "picture": "images/1.jpg",
     "preis": 300,
-    "type": "Gibt es unterschiediche Typen?"
+    "type": "Typ 1"
   },
   {
     "id": 1,
-    "name": "handtasche XYZ",
+    "name": "Bag 2",
     "picture": "images/2.jpg",
     "preis": 10.50,
-    "type": "Cooler Typ!"
+    "type": "Typ 2"
   },
   {
     "id": 2,
-    "name": "kein Plan",
+    "name": "Bag 3",
     "picture": "images/3.jpg",
     "preis": 12345,
-    "type": "Fresher Dude"
+    "type": "Typ 3"
   }
 ]
