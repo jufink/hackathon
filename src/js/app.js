@@ -14,6 +14,7 @@ App = {
         bags.find('.bag-type').text(data[i].type);
         bags.find('.bag-price').text(data[i].preis);
         bags.find('.btn-rent').attr('data-id', data[i].id);
+        bags.find('.btn-rentback').attr('data-id', data[i].id);
         bagRow.append(bags.html());
       }
     });
@@ -45,6 +46,7 @@ App = {
 
   bindEvents: function() {
     $(document).on('click', '.btn-rent', App.lend);
+    $(document).on('click', '.btn-rentback', App.lendback);
   },
 
 
@@ -55,8 +57,10 @@ App = {
       return Contract.getRenters.call();
     }).then(function(adopters) {
       for (i = 0; i < adopters.length; i++) {
+        $('.panel-bag').eq(i).find('button').last().text('Noch nicht verliehen').attr('disabled', true);
         if (adopters[i] !== '0x0000000000000000000000000000000000000000') {
-          $('.panel-bag').eq(i).find('button').text('Success').attr('disabled', true);
+          $('.panel-bag').eq(i).find('button').first().text('Verliehen').attr('disabled', true);
+          $('.panel-bag').eq(i).find('button').last().text('Rückgabe').attr('disabled', false);
         }
       }
     }).catch(function(err) {
@@ -83,7 +87,28 @@ App = {
         console.log(err.message);
       });
     });
+  },
+   lendback: function() {
+    event.preventDefault();
+    var bagID = parseInt($(event.target).data('id'));
+    var Contract;
+    web3.eth.getAccounts(function(error, accounts) {
+      if (error) {
+        console.log(error);
+      }
+      var account = accounts[0];
+      App.contracts.Lend.deployed().then(function(instance) {
+        Contract = instance;
+        return Contract.rent_back(bagID, {from: account});
+      }).then(function(result) {
+        return App.markRented();
+      }).catch(function(err) {
+        console.log(err.message);
+      });
+    });
   }
+
+
 };
 
 
